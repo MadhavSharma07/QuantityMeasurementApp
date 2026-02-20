@@ -3,6 +3,8 @@ package quantitymeasurement;
 
 import java.util.Scanner;
 
+import quantitymeasurement.Length.*;
+
 public class QuantityMeasurementApp {
 
     public static void main(String[] args) {
@@ -14,15 +16,13 @@ public class QuantityMeasurementApp {
             double value1 = Double.parseDouble(scanner.nextLine());
 
             System.out.println("Enter first unit (FEET / INCHES):");
-            Length.LengthUnit unit1 =
-                    Length.LengthUnit.valueOf(scanner.nextLine().toUpperCase());
+            LengthUnit unit1 =  Length.LengthUnit.valueOf("FEET");
 
             System.out.println("Enter second value:");
             double value2 = Double.parseDouble(scanner.nextLine());
 
             System.out.println("Enter second unit (FEET / INCHES):");
-            Length.LengthUnit unit2 =
-                    Length.LengthUnit.valueOf(scanner.nextLine().toUpperCase());
+            LengthUnit unit2 = Length.LengthUnit.valueOf("INCHES");
 
             Length length1 = new Length(value1, unit1);
             Length length2 = new Length(value2, unit2);

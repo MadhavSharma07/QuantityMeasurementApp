@@ -102,6 +102,36 @@ public class Length {
     	
     	return convertedLength;
     }
+    
+    public static Length add(Length l1, Length l2, LengthUnit targetUnit) {
+
+        if (l1 == null || l2 == null)
+            throw new IllegalArgumentException("Operands cannot be null");
+
+        if (targetUnit == null)
+            throw new IllegalArgumentException("Target unit cannot be null");
+        double base1 = l1.toBaseUnit();
+        double base2 = l2.toBaseUnit();
+
+        double sumInBase = base1 + base2;
+        double resultValue = sumInBase / targetUnit.getConversionFactor();
+
+        Length resultantLength =new Length(resultValue, targetUnit);
+        
+        return resultantLength;
+    }
+    public Length add(Length other) {
+
+        if (other == null)
+            throw new IllegalArgumentException("Operand cannot be null");
+
+        double baseSum = this.toBaseUnit() + other.toBaseUnit();
+
+        double resultValue =
+                baseSum / this.unit.getConversionFactor();
+
+        return new Length(resultValue, this.unit);
+    }
    
 }
 

@@ -31,6 +31,14 @@ public class QuantityMeasurementApp {
 		return length.convertTo(toUnit);
 	}
 	
+	 public static Length demonstrateLengthAddition(Length l1, Length l2) {
+	        return l1.add(l2);  
+	    }
+
+	    public static Length demonstrateLengthAddition(Length l1, Length l2, Length.LengthUnit targetUnit) {
+
+	        return Length.add(l1, l2, targetUnit);
+	    }
 	
     public static void main(String[] args) {
 
@@ -66,6 +74,36 @@ public class QuantityMeasurementApp {
         	Length l6 = demonstrateLengthConversion(0.0, Length.LengthUnit.FEET, Length.LengthUnit.INCHES);
         	System.out.println("Output: "+l6.getValue());
         	
+        	// Addition
+        	 Length a1 = new Length(1.0, Length.LengthUnit.FEET);
+             Length a2 = new Length(12.0, Length.LengthUnit.INCHES);
+
+             Length result1 = demonstrateLengthAddition(a1, a2);
+             System.out.println("1 ft + 12 in = " + result1.getValue()+" "+result1.getUnit());
+
+             Length result2 = demonstrateLengthAddition(
+                     new Length(1.0, Length.LengthUnit.YARDS),
+                     new Length(3.0, Length.LengthUnit.FEET));
+
+             System.out.println("1 yd + 3 ft = " + result2.getValue()+" "+result2.getUnit());
+
+             Length result3 = demonstrateLengthAddition(
+                     new Length(12.0, Length.LengthUnit.INCHES),
+                     new Length(1.0, Length.LengthUnit.FEET));
+
+             System.out.println("12 in + 1 ft = " + result3.getValue()+" "+result3.getUnit());
+
+             Length result4 = demonstrateLengthAddition(
+                     new Length(2.54, Length.LengthUnit.CENTIMETER),
+                     new Length(1.0, Length.LengthUnit.INCHES));
+
+             System.out.println("2.54 cm + 1 in = " + result4.getValue()+" "+result4.getUnit());
+
+             Length result5 = demonstrateLengthAddition(
+                     new Length(5.0, Length.LengthUnit.FEET),
+                     new Length(-2.0, Length.LengthUnit.FEET));
+
+             System.out.println("5 ft + (-2 ft) = " + result5.getValue()+" "+result5.getUnit());
         	
 
         } catch (IllegalArgumentException e) {

@@ -11,7 +11,9 @@ public class Length {
     public enum LengthUnit {
 
         FEET(12.0),      // 1 foot = 12 inches
-        INCHES(1.0);
+        INCHES(1.0),
+        YARDS(36.0),
+        CENTIMETER(0.393701);
 
         private final double conversionFactor;
 
@@ -43,7 +45,7 @@ public class Length {
         if (other == null)
             return false;
 
-        return Double.compare(this.toBaseUnit(), other.toBaseUnit()) == 0;
+        return Double.compare(Math.floor(this.toBaseUnit()), Math.floor(other.toBaseUnit())) == 0;
     }
 
  

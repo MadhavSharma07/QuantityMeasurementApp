@@ -28,6 +28,14 @@ public class Length {
 
 		
     }
+    
+    public double getValue() {
+    	return value;
+    }
+    
+    public LengthUnit getUnit() {
+    	return unit;
+    }
 
     public Length(double value, LengthUnit unit) {
 
@@ -69,5 +77,31 @@ public class Length {
     public int hashCode() {
         return Objects.hash(toBaseUnit());
     }
+    
+    public static double convert(double value , Length.LengthUnit sourceUnit,Length.LengthUnit targetUnit) {
+    	if(!Double.isFinite(value)) { throw new IllegalArgumentException("Invalid value");}
+    	if(sourceUnit ==null || targetUnit==null) {
+    		throw new IllegalArgumentException("Invalid unit");
+    	}
+    	
+    	double base = value*sourceUnit.getConversionFactor();
+    	double convertedValue = base/targetUnit.getConversionFactor();
+    	
+    	return convertedValue;
+    } 
+    
+    public Length convertTo(Length.LengthUnit targetUnit) {
+    	if(!Double.isFinite(value)) { throw new IllegalArgumentException("Invalid value");}
+    	if(this.unit ==null || targetUnit==null) {
+    		throw new IllegalArgumentException("Invalid unit");
+    	}
+    	
+    	double base = value*this.unit.getConversionFactor();
+    	double convertedValue = base/targetUnit.getConversionFactor();
+    	Length convertedLength = new Length(convertedValue,targetUnit);
+    	
+    	return convertedLength;
+    }
+   
 }
 

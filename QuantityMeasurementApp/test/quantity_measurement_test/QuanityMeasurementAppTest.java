@@ -168,7 +168,20 @@ class QuantityMeasurementAppTest {
         assertThrows(IllegalArgumentException.class,() -> l1.add(null));
     }
 
-   
+
+    @Test
+    void testAddition_TargetFeet() {
+        Length result = new Length(1.0, Length.LengthUnit.FEET) .add(new Length(12.0, Length.LengthUnit.INCHES), Length.LengthUnit.FEET);
+
+        assertEquals(new Length(2.0, Length.LengthUnit.FEET),result);
+    }
+
+    @Test
+    void testAddition_TargetInches() {
+        Length result = new Length(1.0, Length.LengthUnit.FEET).add(new Length(12.0, Length.LengthUnit.INCHES),Length.LengthUnit.INCHES);
+
+        assertEquals(new Length(24.0, Length.LengthUnit.INCHES), result);
+    }
 
 }
 

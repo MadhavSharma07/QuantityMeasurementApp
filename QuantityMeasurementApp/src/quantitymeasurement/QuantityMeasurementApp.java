@@ -35,9 +35,14 @@ public class QuantityMeasurementApp {
 	        return l1.add(l2);  
 	    }
 
-	    public static Length demonstrateLengthAddition(Length l1, Length l2, Length.LengthUnit targetUnit) {
+//	    public static Length demonstrateLengthAddition(Length l1, Length l2, Length.LengthUnit targetUnit) {
+//
+//	        return Length.add(l1, l2, targetUnit);
+//	    }
+	 
+	 public static Length demonstrateLengthAddition( Length l1, Length l2, Length.LengthUnit targetUnit) {
 
-	        return Length.add(l1, l2, targetUnit);
+	        return l1.add(l2, targetUnit);
 	    }
 	
     public static void main(String[] args) {
@@ -58,21 +63,21 @@ public class QuantityMeasurementApp {
 //        		System.out.println("Equal -> "+result4);
 //        		System.out.println("Equal -> "+result5);
         		
-        	Length l1 = demonstrateLengthConversion(1.0, Length.LengthUnit.FEET,Length.LengthUnit.INCHES);
-        	System.out.println("Output: "+l1.getValue());
-        	
-        	Length l2 = new Length(3.0,Length.LengthUnit.YARDS);
-        	Length l3 = demonstrateLengthConversion(l2, Length.LengthUnit.FEET);
-        	System.out.println("Output: "+l3.getValue());
-        	
-        	Length l4 = demonstrateLengthConversion(36.0, Length.LengthUnit.INCHES, Length.LengthUnit.YARDS);
-        	System.out.println("Ouput: "+l4.getValue());
-        	
-        	Length l5 = demonstrateLengthConversion(1.0, Length.LengthUnit.CENTIMETER,Length.LengthUnit.INCHES);
-        	System.out.println("Output: "+l5.getValue());
-        	
-        	Length l6 = demonstrateLengthConversion(0.0, Length.LengthUnit.FEET, Length.LengthUnit.INCHES);
-        	System.out.println("Output: "+l6.getValue());
+//        	Length l1 = demonstrateLengthConversion(1.0, Length.LengthUnit.FEET,Length.LengthUnit.INCHES);
+//        	System.out.println("Output: "+l1.getValue());
+//        	
+//        	Length l2 = new Length(3.0,Length.LengthUnit.YARDS);
+//        	Length l3 = demonstrateLengthConversion(l2, Length.LengthUnit.FEET);
+//        	System.out.println("Output: "+l3.getValue());
+//        	
+//        	Length l4 = demonstrateLengthConversion(36.0, Length.LengthUnit.INCHES, Length.LengthUnit.YARDS);
+//        	System.out.println("Output: "+l4.getValue());
+//        	
+//        	Length l5 = demonstrateLengthConversion(1.0, Length.LengthUnit.CENTIMETER,Length.LengthUnit.INCHES);
+//        	System.out.println("Output: "+l5.getValue());
+//        	
+//        	Length l6 = demonstrateLengthConversion(0.0, Length.LengthUnit.FEET, Length.LengthUnit.INCHES);
+//        	System.out.println("Output: "+l6.getValue());
         	
         	// Addition
         	 Length a1 = new Length(1.0, Length.LengthUnit.FEET);
@@ -99,12 +104,22 @@ public class QuantityMeasurementApp {
 
              System.out.println("2.54 cm + 1 in = " + result4.getValue()+" "+result4.getUnit());
 
-             Length result5 = demonstrateLengthAddition(
-                     new Length(5.0, Length.LengthUnit.FEET),
-                     new Length(-2.0, Length.LengthUnit.FEET));
+             Length result5 = demonstrateLengthAddition(new Length(5.0, Length.LengthUnit.FEET),new Length(-2.0, Length.LengthUnit.FEET));
 
              System.out.println("5 ft + (-2 ft) = " + result5.getValue()+" "+result5.getUnit());
-        	
+        	//Addition in Cross Length units
+             Length result6 = demonstrateLengthAddition(new Length(1.0, Length.LengthUnit.FEET),new Length(12.0, Length.LengthUnit.INCHES), Length.LengthUnit.INCHES);
+
+             System.out.println("1 ft + 12 in (in inches) = " + result6);
+
+             Length result7 = demonstrateLengthAddition( new Length(1.0, Length.LengthUnit.FEET), new Length(12.0, Length.LengthUnit.INCHES), Length.LengthUnit.YARDS);
+
+             System.out.println("1 ft + 12 in (in yards) = " + result7);
+
+             Length result8 = demonstrateLengthAddition(new Length(5.0, Length.LengthUnit.FEET),new Length(-2.0, Length.LengthUnit.FEET),Length.LengthUnit.INCHES);
+
+             System.out.println("5 ft + (-2 ft) (in inches) = " + result8);
+
 
         } catch (IllegalArgumentException e) {
             System.out.println("Invalid input or unsupported unit.");

@@ -7,6 +7,7 @@ public class Length {
 
 	private final double value;
     private final LengthUnit unit;
+    private final static double Epsilon=0.0001d;
 
     public enum LengthUnit {
 
@@ -45,7 +46,8 @@ public class Length {
         if (other == null)
             return false;
 
-        return Double.compare(Math.floor(this.toBaseUnit()), Math.floor(other.toBaseUnit())) == 0;
+//        return Double.compare(Math.floor(this.toBaseUnit()), Math.floor(other.toBaseUnit())) == 0;
+        return Math.abs(this.toBaseUnit()- other.toBaseUnit())<Epsilon;
     }
 
  

@@ -1,4 +1,4 @@
-package quantitymeasurement;
+package quantitymeasurement.com.apps.quantitymeasurement;
 
 
 import java.util.Objects;
@@ -9,25 +9,7 @@ public class Length {
     private final LengthUnit unit;
     private final static double Epsilon=0.0001d;
 
-    public enum LengthUnit {
-
-        FEET(12.0),      // 1 foot = 12 inches
-        INCHES(1.0),
-        YARDS(36.0),
-        CENTIMETER(0.393701);
-
-        private final double conversionFactor;
-
-        LengthUnit(double conversionFactor) {
-            this.conversionFactor = conversionFactor;
-        }
-
-        public double getConversionFactor() {
-            return conversionFactor;
-        }
-
-		
-    }
+   
     
     public double getValue() {
     	return value;
@@ -47,7 +29,7 @@ public class Length {
     }
 
     private double toBaseUnit() {
-        return this.value * this.unit.getConversionFactor();
+        return unit.convertToBaseUnit(value);
     }
 
     public boolean compare(Length other) {
@@ -78,26 +60,26 @@ public class Length {
         return Objects.hash(toBaseUnit());
     }
     
-    public static double convert(double value , Length.LengthUnit sourceUnit,Length.LengthUnit targetUnit) {
+    public static double convert(double value ,LengthUnit sourceUnit,LengthUnit targetUnit) {
     	if(!Double.isFinite(value)) { throw new IllegalArgumentException("Invalid value");}
     	if(sourceUnit ==null || targetUnit==null) {
     		throw new IllegalArgumentException("Invalid unit");
     	}
     	
-    	double base = value*sourceUnit.getConversionFactor();
-    	double convertedValue = base/targetUnit.getConversionFactor();
+    	double base = sourceUnit.convertToBaseUnit(value);
+    	double convertedValue = targetUnit.convertFromBaseUnit(base);
     	
     	return convertedValue;
     } 
     
-    public Length convertTo(Length.LengthUnit targetUnit) {
+    public Length convertTo(LengthUnit targetUnit) {
     	if(!Double.isFinite(value)) { throw new IllegalArgumentException("Invalid value");}
     	if(this.unit ==null || targetUnit==null) {
     		throw new IllegalArgumentException("Invalid unit");
     	}
     	
-    	double base = value*this.unit.getConversionFactor();
-    	double convertedValue = base/targetUnit.getConversionFactor();
+    	double base = this.toBaseUnit();
+    	double convertedValue = targetUnit.convertFromBaseUnit(base);
     	Length convertedLength = new Length(convertedValue,targetUnit);
     	
     	return convertedLength;
@@ -111,8 +93,7 @@ public class Length {
 
         double baseSum = this.toBaseUnit() + other.toBaseUnit();
 
-        double resultValue =
-                baseSum / this.unit.getConversionFactor();
+        double resultValue =this.unit.convertFromBaseUnit(baseSum);
 
         return new Length(resultValue, this.unit);
     }
@@ -127,7 +108,7 @@ public class Length {
 
         double baseSum = this.toBaseUnit() + other.toBaseUnit();
 
-        double resultValue =baseSum / targetUnit.getConversionFactor();
+        double resultValue =targetUnit.convertFromBaseUnit(baseSum);
 
         return new Length(resultValue, targetUnit);
     }

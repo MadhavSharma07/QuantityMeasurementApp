@@ -1,16 +1,14 @@
 package quantitymeasurement.com.apps.quantitymeasurement;
 
-public enum WeightUnit implements IMeasurable {
+public enum VolumeUnit implements IMeasurable {
 
-    MILLIGRAM(0.001),
-    GRAM(1.0),
-    KILOGRAM(1000.0),
-    POUND(453.592),
-    TONNE(1000000.0);
+    LITRE(1.0),           // base unit
+    MILLILITRE(0.001),    // 1 mL = 0.001 L
+    GALLON(3.78541);      // 1 gallon = 3.78541 L
 
     private final double conversionFactor;
 
-    WeightUnit(double conversionFactor) {
+    VolumeUnit(double conversionFactor) {
         this.conversionFactor = conversionFactor;
     }
 

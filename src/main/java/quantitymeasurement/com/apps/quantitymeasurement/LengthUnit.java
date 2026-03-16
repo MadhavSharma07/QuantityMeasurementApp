@@ -1,8 +1,8 @@
 package quantitymeasurement.com.apps.quantitymeasurement;
 
-public enum LengthUnit {
+public enum LengthUnit implements IMeasurable {
 
-    FEET(12.0),      // 1 foot = 12 inches
+    FEET(12.0),
     INCHES(1.0),
     YARDS(36.0),
     CENTIMETER(0.393701);
@@ -13,15 +13,23 @@ public enum LengthUnit {
         this.conversionFactor = conversionFactor;
     }
 
+    @Override
     public double getConversionFactor() {
         return conversionFactor;
     }
-    
+
+    @Override
     public double convertToBaseUnit(double value) {
-    	return value*conversionFactor;
+        return value * conversionFactor;
     }
-	
+
+    @Override
     public double convertFromBaseUnit(double baseValue) {
-    		return baseValue/conversionFactor;
+        return baseValue / conversionFactor;
+    }
+
+    @Override
+    public String getUnitName() {
+        return this.name();
     }
 }

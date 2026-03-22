@@ -1,4 +1,4 @@
-package quantitymeasurement.com.apps.quantitymeasurement;
+package entity;
 
 import java.util.Objects;
 import java.util.function.DoubleBinaryOperator;

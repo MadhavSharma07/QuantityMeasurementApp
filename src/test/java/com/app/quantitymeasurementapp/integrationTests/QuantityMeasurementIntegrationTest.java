@@ -44,7 +44,7 @@ public class QuantityMeasurementIntegrationTest {
         dbRepository.releaseResources();
     }
 
-    // ==================== Compare ====================
+    //  Compare
 
     @Test
     public void testCompare_FeetEqualsInches_SavesToDB() {
@@ -70,7 +70,7 @@ public class QuantityMeasurementIntegrationTest {
         assertTrue(service.compare(q1, q2));
     }
 
-    // ==================== Convert ====================
+    //  Convert
 
     @Test
     public void testConvert_CelsiusToFahrenheit_SavesToDB() {
@@ -89,7 +89,7 @@ public class QuantityMeasurementIntegrationTest {
         assertEquals(273.15, result.getValue(), 1e-9);
     }
 
-    // ==================== Add ====================
+    //  Add
 
     @Test
     public void testAdd_FeetPlusInches_SavesToDB() {
@@ -100,7 +100,7 @@ public class QuantityMeasurementIntegrationTest {
         assertEquals(1, dbRepository.getTotalCount());
     }
 
-    // ==================== Controller end-to-end ====================
+    // Controller end-to-end
 
     @Test
     public void testControllerEndToEnd_AllOperations_PersistAll() {
@@ -112,7 +112,7 @@ public class QuantityMeasurementIntegrationTest {
         assertEquals(5, dbRepository.getTotalCount());
     }
 
-    // ==================== Query by operation ====================
+    //  Query by operation
 
     @Test
     public void testQueryByOperation_AfterMultipleOps() {
@@ -123,7 +123,7 @@ public class QuantityMeasurementIntegrationTest {
         assertEquals(2, compareOps.size());
     }
 
-    // ==================== Query by type ====================
+    //  Query by type
 
     @Test
     public void testQueryByMeasurementType_AfterMixedOps() {
@@ -134,7 +134,7 @@ public class QuantityMeasurementIntegrationTest {
         assertEquals(2, lengthOps.size());
     }
 
-    // ==================== Delete ====================
+    //  Delete
 
     @Test
     public void testDeleteAll_AfterOperations() {
@@ -145,7 +145,7 @@ public class QuantityMeasurementIntegrationTest {
         assertEquals(0, dbRepository.getTotalCount());
     }
 
-    // ==================== Repository types ====================
+    //  Repository types
 
     @Test
     public void testRepositoryFactory_DatabaseRepository_NotNull() {
@@ -160,7 +160,7 @@ public class QuantityMeasurementIntegrationTest {
         assertTrue(cacheRepo instanceof QuantityMeasurementCacheRepository);
     }
 
-    // ==================== Pool ====================
+    //  Pool
 
     @Test
     public void testPoolStatistics_Accessible_NotEmpty() {

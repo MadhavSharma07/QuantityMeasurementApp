@@ -1,5 +1,6 @@
-package com.app.quantitymeasurementapp.controller;
+package com.app.quantitymeasurementapp;
 
+import com.app.quantitymeasurementapp.controller.QuantityMeasurementController;
 import com.app.quantitymeasurementapp.model.QuantityDTO;
 import com.app.quantitymeasurementapp.model.QuantityInputDTO;
 import com.app.quantitymeasurementapp.model.QuantityMeasurementDTO;
@@ -23,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(QuantityMeasurementController.class)
 @WithMockUser
-class QuantityMeasurementControllerTest {
+class QuantityMeasurementAppTest {
 
     @Autowired
     private MockMvc mockMvc;

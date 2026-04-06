@@ -1,15 +1,11 @@
 package com.app.quantitymeasurementapp.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class QuantityMeasurementDTO {
 
     private Double  thisValue;
@@ -87,7 +83,6 @@ public class QuantityMeasurementDTO {
 	public void setOperation(String operation) {
 		this.operation = operation;
 	}
-
 	public String getResultString() {
 		return resultString;
 	}

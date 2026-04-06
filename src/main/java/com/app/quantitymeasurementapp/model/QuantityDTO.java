@@ -10,9 +10,7 @@ import lombok.NoArgsConstructor;
 import java.util.Arrays;
 import java.util.Map;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class QuantityDTO {
 
     @NotNull(message = "Value must not be null")

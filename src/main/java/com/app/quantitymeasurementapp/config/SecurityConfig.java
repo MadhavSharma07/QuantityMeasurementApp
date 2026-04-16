@@ -47,7 +47,10 @@ public class SecurityConfig {
                     "/app/subtract",
                     "/app/divide",
                     "/app/count/**",
+<<<<<<< HEAD
                     "app/history/**",
+=======
+>>>>>>> bfebfad0fa59307d03efbb48f27153ecf6f75b45
                     // Swagger
                     "/swagger-ui/**",
                     "/swagger-ui.html",

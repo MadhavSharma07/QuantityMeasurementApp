@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:src/main/java/com/app/quantitymeasurementapp/unit/Quantity.java
 package com.app.quantitymeasurementapp.unit;
-========
-package entity;
->>>>>>>> main:src/main/java/entity/Quantity.java
 
 import java.util.Objects;
 

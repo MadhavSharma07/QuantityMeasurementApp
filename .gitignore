@@ -1,0 +1,4 @@
+# Ignore application properties in resources
+src/main/resources/application.properties
+# Maven build folder
+target/
